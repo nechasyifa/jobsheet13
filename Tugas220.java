@@ -1,8 +1,18 @@
 import java.util.Scanner;
 
 public class Tugas220 {
-    static int[][] nilai = new int[5][7]; 
+    static int[][] nilai; 
     public static void main(String[] args) {
+        Scanner input20 = new Scanner(System.in);
+
+        System.out.print("Masukkan jumlah mahasiswa: ");
+        int jumlahMahasiswa = input20.nextInt();
+
+        System.out.print("Masukkan jumlah tugas: ");
+        int jumlahTugas = input20.nextInt();
+
+        nilai = new int[jumlahMahasiswa][jumlahTugas];
+
         inputNilai();
         tampilNilai();
         hariNilaiTertinggi();
@@ -18,7 +28,6 @@ public class Tugas220 {
                 nilai[i][j] = input20.nextInt();
             }
         }
-        input20.close(); 
     }
 
     // Fungsi untuk menampilkan seluruh nilai mahasiswa
@@ -26,11 +35,15 @@ public class Tugas220 {
         System.out.println("+-----------------------------------------------------+");
         System.out.println("|" + "\t\tNilai Tugas Mahasiswa   \t\t" + "|");
         System.out.println("+-----------------------------------------------------+");
-        System.out.println("Mg-1\t Mg-2\t Mg-3\t Mg-4\t Mg-5\t Mg-6\t Mg-7");
-        System.out.println("+-----------------------------------------------------+");
+        System.out.print("      ");
+        for (int i = 0; i < nilai[0].length; i++) {
+            System.out.print("Mg-" + (i + 1) + "\t");
+        }
+        System.out.println("\n+-----------------------------------------------------+");    
         for (int i = 0; i < nilai.length; i++) {
-            for (int j = 0; j < nilai[i].length; j++) {
-                System.out.print(nilai[i][j] + "\t");
+            System.out.print("Mh-" + (i + 1) + ": ");
+        for (int j = 0; j < nilai[i].length; j++) {
+                System.out.print(nilai[i][j] + " \t");
             }
             System.out.println();
         }
@@ -70,6 +83,6 @@ public class Tugas220 {
             }
         }
 
-        System.out.println("Mahasiswa dengan nilai tertinggi adalah mahasiswa ke-" + mahasiswaTertinggi + " ,dengan Nilai " + nilaiTertinggi + " ,dari minggu ke-" + mingguTertinggi);
+        System.out.println("Mahasiswa dengan nilai tertinggi adalah mahasiswa ke-" + mahasiswaTertinggi + ", dengan Nilai " + nilaiTertinggi + ", dari minggu ke-" + mingguTertinggi);
     }
 }
